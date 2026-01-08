@@ -1,0 +1,21 @@
+{
+  "id": "nn_basics",
+  "id2": "topic001",
+  "title": "What Is a Neural Network?",
+  "level": "high-school",
+  "estimated_minutes": 5,
+  "learning_objectives": [
+    "Understand what a neural network is at a high level",
+    "Recognize the basic structure of a neural network",
+    "Understand how neural networks learn from data"
+  ],
+  "key_concepts": [
+    "neurons",
+    "layers",
+    "training",
+    "weights",
+    "patterns"
+  ],
+  "prerequisites": [],
+  "version": "1.0"
+}
