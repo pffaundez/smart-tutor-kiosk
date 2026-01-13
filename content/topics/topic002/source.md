@@ -1,0 +1,13 @@
+# Supervised vs. Unsupervised Learning
+
+Machine learning is a way to build systems that learn patterns from data rather than being programmed with explicit rules. Two common categories are supervised learning and unsupervised learning. They differ mainly in whether the training data includes labels (correct answers).
+
+In supervised learning, the model is trained on examples that include both inputs and desired outputs. For instance, you might train a model with many emails labeled “spam” or “not spam,” or many images labeled with the object they contain. The model learns a mapping from inputs to outputs by minimizing prediction error. Typical supervised tasks include classification (predicting a category) and regression (predicting a number). Supervised learning is powerful when you have reliable labels and a clear goal for what the model should predict.
+
+In unsupervised learning, the training data has inputs but no labels. The goal is to discover structure within the data. Instead of predicting a known answer, the model tries to find patterns such as groups of similar items, lower-dimensional representations, or unusual examples. Common unsupervised tasks include clustering (grouping similar data points), dimensionality reduction (compressing data while preserving important information), and anomaly detection (finding rare or abnormal cases). Unsupervised methods are useful when labeling data is expensive, slow, or impossible, and when you want to explore what the data contains.
+
+A simple example: imagine a dataset of customer purchases. With supervised learning, you might predict whether a customer will churn using past behavior and known churn labels. With unsupervised learning, you might group customers into segments based on purchase patterns without predefined categories, then interpret those segments for marketing strategies.
+
+There are also related approaches. Semi-supervised learning uses a small amount of labeled data and a larger amount of unlabeled data. Self-supervised learning creates “pseudo-labels” from the data itself (for example, predicting missing words in a sentence), which can be used to train strong representations. Many modern AI systems, including language models, rely heavily on self-supervised learning.
+
+Choosing between supervised and unsupervised learning depends on the problem. If you have clear labels and want specific predictions, supervised learning is often best. If you want to discover structure, generate insights, or build representations when labels are unavailable, unsupervised learning is a strong choice.
