@@ -39,11 +39,12 @@ The system is organized around three pipelines, illustrated in the diagram prese
 
    ----
 
-<img width="1103" height="906" alt="image" src="https://github.com/user-attachments/assets/2230eea6-04f7-401c-9a61-72d46318da77" />
+<img width="1103" height="906" alt="image" src="https://github.com/user-attachments/assets/0801f0fa-19f6-4273-a99f-166a7fad2d08" />
 
 ----
 
 ## Purpose
 
 The goal of this demo is to show how adaptive tutoring with large language models can be deployed in a controlled, transparent, and safe way for public educational environments, using curated content and strict runtime guardrails.
+
 
