@@ -1,0 +1,58 @@
+{
+  "id": "nn_basics_quiz_1",
+  "topic_id": "nn_basics",
+  "questions": [
+    {
+      "id": "q1",
+      "question": "What is a neural network mainly inspired by?",
+      "options": [
+        "The way the human brain processes information",
+        "The structure of computer hardware",
+        "Traditional rule-based programming",
+        "Random mathematical functions"
+      ],
+      "correctIndex": 0,
+      "conceptTag": "inspiration",
+      "explanation_if_wrong": "Neural networks are inspired by how biological neurons process and transmit information, not by hardware or rules."
+    },
+    {
+      "id": "q2",
+      "question": "What is the main role of weights in a neural network?",
+      "options": [
+        "To store the final prediction",
+        "To control how input values influence the output",
+        "To label the training data",
+        "To activate neurons randomly"
+      ],
+      "correctIndex": 1,
+      "conceptTag": "weights",
+      "explanation_if_wrong": "Weights determine how strongly each input affects the neuron’s output and are adjusted during training."
+    },
+    {
+      "id": "q3",
+      "question": "How does a neural network improve its performance during training?",
+      "options": [
+        "By memorizing the input data exactly",
+        "By adjusting its weights based on prediction errors",
+        "By increasing the number of neurons automatically",
+        "By following predefined logical rules"
+      ],
+      "correctIndex": 1,
+      "conceptTag": "training",
+      "explanation_if_wrong": "Neural networks learn by comparing predictions with correct answers and adjusting weights to reduce errors."
+    },
+    {
+      "id": "q4",
+      "question": "Which statement about neural networks is correct?",
+      "options": [
+        "They understand data in the same way humans do",
+        "They reason consciously about problems",
+        "They detect statistical patterns in data",
+        "They always produce correct results"
+      ],
+      "correctIndex": 2,
+      "conceptTag": "limitations",
+      "explanation_if_wrong": "Neural networks do not think or reason consciously; they learn patterns based on data."
+    }
+  ]
+}
