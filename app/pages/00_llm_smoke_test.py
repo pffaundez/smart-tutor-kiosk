@@ -1,7 +1,7 @@
 import streamlit as st
 from app.llm.client import LLMClient
 
-st.set_page_config(page_title="LLM Smoke Test", layout="centered")
+st.set_page_config(page_title="LLM Smoke Test ", layout="centered")
 
 st.title("LLM Smoke Test (Ollama)")
 st.caption("Direct LLM test using Ollama /api/chat. No lesson loading, just raw prompts.")

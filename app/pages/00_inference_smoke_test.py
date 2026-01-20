@@ -3,7 +3,7 @@ import streamlit as st
 
 from app.llm.client import LLMClient
 
-st.set_page_config(page_title="Inference Smoke Test", layout="centered")
+st.set_page_config(page_title="Inference Smoke Test ", layout="centered")
 
 st.title("Inference Smoke Test (Local with Ollama)")
 st.caption("Loads an existing lesson.md and runs LLM calls to validate the inference interface.")

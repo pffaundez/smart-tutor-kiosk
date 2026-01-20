@@ -4,7 +4,7 @@ import streamlit as st
 
 from app.llm.client import LLMClient
 
-st.set_page_config(page_title="Compatibility Test", layout="centered")
+st.set_page_config(page_title="Compatibility Test ", layout="centered")
 
 st.title("Compatibility Test")
 st.caption("Basic kiosk checks: UI/touch + network + Ollama inference (local).")
