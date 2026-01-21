@@ -1,0 +1,50 @@
+{
+  "id": "topic001_quiz_2",
+  "topic_id": "topic001",
+  "questions": [
+    {
+      "id": "q1",
+      "question": "Why do neural networks improve over time?",
+      "options": [
+        "Because they receive more computing power",
+        "Because they adjust their weights using correct answers",
+        "Because they copy human reasoning",
+        "Because they store all past inputs"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q2",
+      "question": "What best describes how a neural network makes predictions?",
+      "options": [
+        "By following fixed logical rules",
+        "By understanding the meaning of the data",
+        "By learning statistical patterns from examples",
+        "By randomly guessing"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q3",
+      "question": "What limits the accuracy of a neural network?",
+      "options": [
+        "The size of the computer screen",
+        "The speed of the internet connection",
+        "The quality of the training data",
+        "The number of users"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q4",
+      "question": "Which statement is true about neural networks?",
+      "options": [
+        "They think like humans",
+        "They understand language the same way people do",
+        "They learn by adjusting internal connections",
+        "They work without data"
+      ],
+      "correctIndex": 2
+    }
+  ]
+}

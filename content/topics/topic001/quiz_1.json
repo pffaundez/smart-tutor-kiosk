@@ -1,58 +1,50 @@
 {
-  "id": "nn_basics_quiz_1",
-  "topic_id": "nn_basics",
+  "id": "topic001_quiz_1",
+  "topic_id": "topic001",
   "questions": [
     {
       "id": "q1",
-      "question": "What is a neural network mainly inspired by?",
+      "question": "What is a neural network inspired by?",
       "options": [
-        "The way the human brain processes information",
-        "The structure of computer hardware",
-        "Traditional rule-based programming",
-        "Random mathematical functions"
+        "The structure of the human brain",
+        "The design of computer processors",
+        "The behavior of social networks",
+        "The rules of logic systems"
       ],
-      "correctIndex": 0,
-      "conceptTag": "inspiration",
-      "explanation_if_wrong": "Neural networks are inspired by how biological neurons process and transmit information, not by hardware or rules."
+      "correctIndex": 0
     },
     {
       "id": "q2",
-      "question": "What is the main role of weights in a neural network?",
+      "question": "What is the role of weights in a neural network?",
       "options": [
-        "To store the final prediction",
-        "To control how input values influence the output",
-        "To label the training data",
-        "To activate neurons randomly"
+        "They store the final predictions",
+        "They combine input values inside neurons",
+        "They define the number of layers",
+        "They select which data is ignored"
       ],
-      "correctIndex": 1,
-      "conceptTag": "weights",
-      "explanation_if_wrong": "Weights determine how strongly each input affects the neuron’s output and are adjusted during training."
+      "correctIndex": 1
     },
     {
       "id": "q3",
-      "question": "How does a neural network improve its performance during training?",
+      "question": "What happens during training of a neural network?",
       "options": [
-        "By memorizing the input data exactly",
-        "By adjusting its weights based on prediction errors",
-        "By increasing the number of neurons automatically",
-        "By following predefined logical rules"
+        "The network memorizes all examples",
+        "The neurons are physically rearranged",
+        "The weights are adjusted based on errors",
+        "The input data is removed"
       ],
-      "correctIndex": 1,
-      "conceptTag": "training",
-      "explanation_if_wrong": "Neural networks learn by comparing predictions with correct answers and adjusting weights to reduce errors."
+      "correctIndex": 2
     },
     {
       "id": "q4",
-      "question": "Which statement about neural networks is correct?",
+      "question": "Which task is a common application of neural networks?",
       "options": [
-        "They understand data in the same way humans do",
-        "They reason consciously about problems",
-        "They detect statistical patterns in data",
-        "They always produce correct results"
+        "Database indexing",
+        "Image recognition",
+        "File compression",
+        "Operating system scheduling"
       ],
-      "correctIndex": 2,
-      "conceptTag": "limitations",
-      "explanation_if_wrong": "Neural networks do not think or reason consciously; they learn patterns based on data."
+      "correctIndex": 1
     }
   ]
 }
