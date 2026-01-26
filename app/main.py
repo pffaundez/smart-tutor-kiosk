@@ -4,6 +4,11 @@ from app.core.content_loader import list_topics, load_topic
 from app.core.scoring import score_quiz
 from app.core.session import init_session_state, touch, maybe_reset
 from app.llm.client import LLMClient
+from app.core.retrieval.retriever import EmbeddingRetriever
+
+# Inclusion of retriever for new function
+retriever = EmbeddingRetriever()
+
 
 
 st.set_page_config(page_title="Smart Tutor Demo", layout="centered")
@@ -95,8 +100,9 @@ if st.session_state.step == "quiz1":
         st.rerun()
 
 # -------------------------
-# Step: Reinforcement (LLM)
+# Step: Reinforcement (with embedding RAG)
 # -------------------------
+
 if st.session_state.step == "reinforce":
     touch(st)
     res = st.session_state.q1_result
@@ -105,40 +111,95 @@ if st.session_state.step == "reinforce":
     st.subheader("Reinforcement")
     st.write(f"You got **{res['correct']} / {res['total']}** correct.")
 
-    # Build reinforcement prompt grounded in source.md
-    source = topic["source"] or topic["lesson"]  # fallback if no source.md
-    missed_summary = "\n".join(
-        [
-            f"- Focus concept: {q.get('conceptTag', 'unknown')}\n"
-            f"  Question topic: {q['question']}\n"
-            f"  Correct idea: {q['options'][q['correctIndex']]}"
-            for q in incorrect
-        ]
-    )
+    # -------------------------
+    # DEBUG 1: show incorrect questions (before generation)
+    # -------------------------
+    st.markdown("### Incorrect questions (debug)")
+    for i, q in enumerate(incorrect, start=1):
+        correct_text = q["options"][q["correctIndex"]]
+        st.write(f"**{i}. {q['question']}**")
+        st.write(f"Correct answer: **{correct_text}**")
+        st.divider()
+
+    # --- Build retrieval queries per mistake ---
+    queries = []
+    for q in incorrect:
+        correct = q["options"][q["correctIndex"]]
+        queries.append(f"{q['question']} Correct answer: {correct}")
+
+    # --- Retrieve relevant chunks (deduplicate) ---
+    retrieved = []
+    seen = set()
+    for qstr in queries:
+        hits = retriever.retrieve(query=qstr, topic_id=topic["id"], k=2)
+        for h in hits:
+            if h["chunk_id"] not in seen:
+                retrieved.append(h)
+                seen.add(h["chunk_id"])
+
+    source_pack = "\n\n".join([f"[{h['chunk_id']}]\n{h['text']}" for h in retrieved])
+
+    # -------------------------
+    # Generation + DEBUG 2: show retrieved chunks (after button press, before reinforcement text)
+    # -------------------------
+    if st.session_state.reinforcement == "":
+        if big_button("Generate Reinforcement", "gen_reinforce"):
+            # Show chunks used (debug) BEFORE calling / printing reinforcement
+            st.markdown("### Retrieved chunks (debug)")
+            if not retrieved:
+                st.warning("No chunks retrieved.")
+            else:
+                for h in retrieved:
+                    st.write(f"**{h['chunk_id']}** (score: {h.get('score', 0):.3f})")
+                    st.write(h["text"])
+                    st.divider()
+
+            # Now generate reinforcement
+            with st.spinner("Generating focused explanation..."):
+                out = client.chat(sys_prompt, user_prompt, max_tokens=260, temperature=0.2)
+
+            st.session_state.reinforcement = out["text"].strip()
+            st.session_state.reinforce_latency = out["latency_ms"]
+            st.rerun()
+
+    else:
+        st.info(f"Generated (latency {st.session_state.reinforce_latency:.0f} ms)")
+        st.write(st.session_state.reinforcement)
+
+        if big_button("Continue to Quiz 2", "to_quiz2"):
+            st.session_state.step = "quiz2"
+            st.rerun()
+
 
     sys_prompt = (
-        "You are a tutor in a public touchscreen kiosk. "
-        "Address the user directly in second person (use 'you'). "
-        "Be concise and factual. "
-        "Use ONLY the provided SOURCE text. "
-        "Do not add new facts or examples. "
-        "Explain ALL the incorrect answers, not just one. "
-        "Write each explanation in short paragraphs, maximum 100 words each."
+        "You are a corrective tutor in a public touchscreen kiosk. "
+        "Your job is NOT to give a general lesson, but to FIX specific misunderstandings. "
+        "Address the user directly using 'you'. "
+        "Use ONLY the information in the SOURCE. "
+        "Do NOT introduce any terms or methods that do not appear in the SOURCE. "
+        "Do NOT repeat the SOURCE verbatim. Rephrase it in your own words. "
+        "Do NOT include titles, headings, bullet points, or summaries. "
+        "Write exactly 2 paragraphs, 120–150 words total. "
+        "Focus ONLY on the concepts related to the user's incorrect answers. "
+        "Do not explain concepts that were not answered incorrectly."
     )
 
     user_prompt = (
-        "You answered several questions incorrectly.\n"
-        "Re-explain the topic focusing on ALL the concepts related to the mistakes listed in the 'missed summary' below.\n"
-        "Address the user directly (use 'you'), not in third person.\n\n"
-        f"SOURCE:\n<<<\n{source}\n>>>\n\n"
-        f"INCORRECT QUESTIONS AND CORRECT IDEAS TO REINFORCE:\n{missed_summary}\n\n"
-        "Write the reinforcement now, covering all of them."
+        "You answered some questions incorrectly. "
+        "Rewrite only the parts of the explanation that are needed to fix those mistakes.\n\n"
+        "Explain why the correct ideas are correct, using the SOURCE below, "
+        "and ignore all other parts of the topic.\n\n"
+        f"SOURCE (use only this information):\n<<<\n{source_pack}\n>>>\n\n"
+        "Write the corrective explanation now."
     )
+
+
+
 
     if st.session_state.reinforcement == "":
         if big_button("Generate Reinforcement", "gen_reinforce"):
-            with st.spinner("Generating..."):
-                out = client.chat(sys_prompt, user_prompt, max_tokens=220, temperature=0.2)
+            with st.spinner("Generating focused explanation..."):
+                out = client.chat(sys_prompt, user_prompt, max_tokens=260, temperature=0.2)
             st.session_state.reinforcement = out["text"].strip()
             st.session_state.reinforce_latency = out["latency_ms"]
             st.rerun()
@@ -149,6 +210,7 @@ if st.session_state.step == "reinforce":
         if big_button("Continue to Quiz 2", "to_quiz2"):
             st.session_state.step = "quiz2"
             st.rerun()
+
 
 # -------------------------
 # Step: Quiz 2
