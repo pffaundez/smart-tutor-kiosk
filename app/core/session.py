@@ -27,6 +27,13 @@ def init_session_state(st):
 
     if "reinforcement" not in st.session_state:
         st.session_state.reinforcement = ""
+    
+    if "reexplain_text" not in st.session_state:
+        st.session_state.reexplain_text = ""
+    
+    if "reexplain_latency" not in st.session_state:
+        st.session_state.reexplain_latency = None
+
 
 
 def touch(st):
