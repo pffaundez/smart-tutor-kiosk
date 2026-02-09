@@ -5,6 +5,7 @@ from app.core.scoring import score_quiz
 from app.core.session import init_session_state, touch, maybe_reset
 from app.llm.client import LLMClient
 from app.core.retrieval.retriever import EmbeddingRetriever
+from app.core.text_processor import format_easy_to_read
 
 # Inclusion of retriever for new function
 @st.cache_resource
@@ -18,13 +19,16 @@ st.set_page_config(page_title="Smart Tutor Demo", layout="centered")
 init_session_state(st)
 maybe_reset(st)
 
-st.title("Smart Tutor Demo (Local)")
+st.title("Smart Tutor Demo (MVP - Local)")
+
+llm1 = "llama3.1:latest"
+llm2 = "llama2:7b-chat-q4_K_M"
 
 # --- Global LLM settings (kiosk would hide this; demo shows it) ---
 with st.expander("LLM Settings (demo only)", expanded=False):
     base_url = st.text_input("Ollama base URL", value="http://127.0.0.1:11434")
     # Model Selection: Llama 3.1
-    model_name = st.text_input("Model name", value="llama3.1:latest")
+    model_name = st.text_input("Model name", value=llm2)
     st.caption("Ensure Ollama is running: `ollama serve`")
 
 client = LLMClient(base_url=base_url, model=model_name)
@@ -70,7 +74,7 @@ REEXPLAIN_MODES = {
         ),
     },
     "daily_analogies": {
-        "label": "Explained with Examples",
+        "label": "Analogies with Everyday Life",
         "sys": (
             "You are a public-kiosk tutor. Address the user as 'you'. "
             "Explain using everyday analogies to make the idea intuitive. "
@@ -79,6 +83,12 @@ REEXPLAIN_MODES = {
             "Write exactly 2 short paragraphs, 120–160 words total. "
             "Use only the provided LESSON text as factual source; rephrase it."
         ),
+    },
+    "custom_domain_analogies": {
+        "label": "Analogies with Custom Domain (WIP)",
+        "sys": None, 
+        "requires_input": True,
+        "input_label": "Enter a domain (e.g., real estate, cooking, sports):"
     },
 }
 
@@ -97,8 +107,14 @@ if st.session_state.step == "select":
         st.error("No topics found in content/topics/")
         st.stop()
 
-    # For now only topic001, but this scales automatically.
-    topic_id = st.selectbox("Choose a topic", topics, index=0)
+        # Cargar metadatos para mostrar títulos en lugar de IDs
+    topics_with_titles = {}
+    for tid in topics:
+        topic_data = load_topic(tid)
+        topics_with_titles[topic_data["title"]] = tid
+    
+    selected_title = st.selectbox("Choose a topic", list(topics_with_titles.keys()), index=0)
+    topic_id = topics_with_titles[selected_title]
 
     if big_button("Start", "start"):
         st.session_state.topic_id = topic_id
@@ -113,7 +129,7 @@ topic = load_topic(st.session_state.topic_id) if st.session_state.topic_id else 
 # -------------------------
 if st.session_state.step == "lesson":
     touch(st)
-    st.subheader(f"Topic: {topic['id']}")
+    st.subheader(f"Topic: {topic['title']}")
     st.write(topic["lesson"] or "_lesson.md not found_")
 
     if big_button("Take Quiz", "to_quiz1"):
@@ -174,17 +190,23 @@ if st.session_state.step == "reinforce":
         correct = q["options"][q["correctIndex"]]
         queries.append(f"{q['question']} Correct answer: {correct}")
 
-    # Retrieve chunks (deduplicate). Keep it tight: 1 chunk per mistake, capped.
+
+    # Retrieve chunks (deduplicate) using batch retrieval (fewer model encodes).
     retrieved = []
     seen = set()
-    for qstr in queries:
-        hits = retriever.retrieve(query=qstr, topic_id=topic["id"], k=1)
+
+    # Batch retrieve: one call encodes all queries at once and searches them all
+    batch_hits = retriever.retrieve_batch(queries, topic_id=topic["id"], k=1)
+
+    for hits in batch_hits:
+        # hits is a list (up to k=1) of candidate chunks for that query
         for h in hits:
             if h["chunk_id"] not in seen:
                 retrieved.append(h)
                 seen.add(h["chunk_id"])
+                break  # since we requested k=1, accept first unseen hit and move on
 
-    retrieved = retrieved[:3]  # safety cap
+    retrieved = retrieved[:1]  # safety cap
     source_pack = " ".join([h["text"].strip() for h in retrieved]).strip()
 
     sys_prompt = (
@@ -210,11 +232,17 @@ if st.session_state.step == "reinforce":
 
     if st.session_state.reinforcement == "":
         if big_button("Generate Reinforcement", "gen_reinforce"):
+            import time
+            t0 = time.perf_counter()
             with st.spinner("Generating focused explanation..."):
-                out = client.chat(sys_prompt, user_prompt, max_tokens=260, temperature=0.2)
+                out = client.chat(sys_prompt, user_prompt, max_tokens=150, temperature=0.2)
+            t_total = (time.perf_counter() - t0) * 1000
+            
             st.session_state.reinforcement = out["text"].strip()
             st.session_state.reinforce_latency = out["latency_ms"]
+            print(f"[main] Total reinforcement time: {t_total:.1f}ms, LLM latency: {out['latency_ms']:.1f}ms")
             st.rerun()
+
     else:
         st.info(f"Generated (latency {st.session_state.reinforce_latency:.0f} ms)")
         st.write(st.session_state.reinforcement)
@@ -284,19 +312,52 @@ if st.session_state.step == "done":
         )
         chosen_mode = mode_labels[chosen_label]
 
+        # Request additional input if mode requires it (e.g., custom domain for analogies)
+        custom_domain = None
+        if chosen_mode == "custom_domain_analogies":
+            custom_domain = st.text_input(
+                REEXPLAIN_MODES[chosen_mode]["input_label"],
+                placeholder="e.g., real estate, cooking, sports, finance"
+            )
+
+
         if big_button("Generate Re-explanation", "gen_reexplain"):
             topic_lesson = (topic["lesson"] if topic else "") or ""
-            sys_prompt = REEXPLAIN_MODES[chosen_mode]["sys"]
+            
+            # Generate system prompt based on chosen mode
+            if chosen_mode == "custom_domain_analogies":
+                if not custom_domain:
+                    st.error("Please enter a domain to continue.")
+                    st.stop()
+                
+                sys_prompt = (
+                    f"You are a public-kiosk tutor. Address the user as 'you'. "
+                    f"Explain the concept using analogies and examples from the '{custom_domain}' domain. "
+                    f"Use ONLY analogies from '{custom_domain}' that preserve the meaning of the LESSON (do not add new facts). "
+                    f"No titles, no bullet points, no numbered lists. "
+                    f"Write exactly 2 short paragraphs, 120–160 words total. "
+                    f"Use only the provided LESSON text as factual source; rephrase it."
+                )
+            else:
+                sys_prompt = REEXPLAIN_MODES[chosen_mode]["sys"]
+            
             user_prompt = (
                 "Rewrite the following LESSON according to the system instructions.\n\n"
                 f"LESSON:\n<<<\n{topic_lesson}\n>>>\n"
             )
 
             with st.spinner("Generating..."):
-                out = client.chat(sys_prompt, user_prompt, max_tokens=260, temperature=0.0)
+                out = client.chat(sys_prompt, user_prompt, max_tokens=150, temperature=0.0)
 
             st.session_state.reexplain_text = out["text"].strip()
-            st.session_state.reexplain_latency = out["latency_ms"]
+        
+            # Aplicar procesamiento si es modo easy_to_read
+            if chosen_mode == "easy_to_read":
+                st.session_state.reexplain_text = format_easy_to_read(st.session_state.reexplain_text)
+        
+            st.session_state.reexplain_latency = out["latency_ms"]            
+
+            #--------------------------------------------
 
         # Show generated text (if any)
         if st.session_state.reexplain_text:
