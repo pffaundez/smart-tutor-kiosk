@@ -6,8 +6,10 @@ class LLMClient:
     """
     Minimal Ollama client using /api/chat.
     """
+    llm1 = "llama3.1:latest"
+    llm2 = "llama2:7b-chat-q4_K_M"
 
-    def __init__(self, base_url: str = "http://127.0.0.1:11434", model: str = "llama3.1:latest", timeout: int = 160):
+    def __init__(self, base_url: str = "http://127.0.0.1:11434", model: str = llm2, timeout: int = 160):
         self.base_url = base_url.rstrip("/")
         self.model = model
         self.timeout = timeout
