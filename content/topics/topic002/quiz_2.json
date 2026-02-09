@@ -1,0 +1,50 @@
+{
+  "id": "topic002_quiz_2",
+  "topic_id": "topic002",
+  "questions": [
+    {
+      "id": "q1",
+      "question": "Which example best matches unsupervised learning?",
+      "options": [
+        "Predicting whether an email is spam using spam/not-spam labels",
+        "Grouping customers into segments based on purchase patterns without labels",
+        "Predicting a house price using past sales with known prices",
+        "Training an image model with images labeled by object type"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q2",
+      "question": "What is clustering?",
+      "options": [
+        "Predicting a number from labeled data",
+        "Grouping similar data points together",
+        "Finding missing labels in a dataset",
+        "Measuring prediction error on a test set"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q3",
+      "question": "Why are unsupervised methods useful in many real problems?",
+      "options": [
+        "They require perfect labels",
+        "They only work on images",
+        "They can be used when labels are expensive or unavailable",
+        "They always produce a single correct answer"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q4",
+      "question": "What does self-supervised learning do?",
+      "options": [
+        "It uses only human-labeled data",
+        "It creates pseudo-labels from the data itself",
+        "It avoids learning patterns from data",
+        "It can only be used for regression"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "id": "topic003_quiz_1",
+  "topic_id": "topic003",
+  "questions": [
+    {
+      "id": "q1",
+      "question": "What is generative AI designed to do?",
+      "options": [
+        "Only classify inputs into fixed categories",
+        "Create new content such as text or images",
+        "Only store and retrieve training examples",
+        "Only detect anomalies in data"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q2",
+      "question": "How does a text-generating model typically produce an answer?",
+      "options": [
+        "It searches the internet for the best paragraph",
+        "It copies and pastes a matching sentence from training data",
+        "It predicts the next tokens repeatedly until the output is complete",
+        "It applies fixed rules written by humans"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q3",
+      "question": "Which statement best matches how generative AI uses training data in normal use?",
+      "options": [
+        "It always copies the training data word-for-word",
+        "It learns statistical relationships and combines concepts in new ways",
+        "It ignores the training data after training is finished",
+        "It only works if the prompt matches a training example exactly"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q4",
+      "question": "Which is a key risk of generative AI mentioned in the lesson?",
+      "options": [
+        "It cannot generate text",
+        "It can produce plausible-sounding but incorrect information",
+        "It always produces the same output",
+        "It requires labeled data to run"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "id": "topic002_quiz_1",
+  "topic_id": "topic002",
+  "questions": [
+    {
+      "id": "q1",
+      "question": "What is the main difference between supervised and unsupervised learning?",
+      "options": [
+        "Supervised learning uses rules, while unsupervised learning uses data",
+        "Supervised learning uses labeled data, while unsupervised learning does not",
+        "Supervised learning is always more accurate than unsupervised learning",
+        "Unsupervised learning requires more labeled examples than supervised learning"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q2",
+      "question": "Which is a typical supervised learning task?",
+      "options": [
+        "Clustering customers into segments",
+        "Dimensionality reduction for visualization",
+        "Classification (predicting a category)",
+        "Anomaly detection (finding rare cases)"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q3",
+      "question": "In unsupervised learning, what is the model trying to do?",
+      "options": [
+        "Predict known answers from labeled examples",
+        "Discover structure and patterns in unlabeled data",
+        "Memorize training labels",
+        "Convert data into explicit rules"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q4",
+      "question": "When is supervised learning often best?",
+      "options": [
+        "When labels are unavailable and you want to explore the data",
+        "When labeling is expensive and slow",
+        "When you have reliable labels and want specific predictions",
+        "When you want to group similar items without predefined categories"
+      ],
+      "correctIndex": 2
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "topic003",
+  "title": "What is Generative AI?",
+  "language": "en",
+  "level": "intro",
+  "estimated_read_time_sec": 70,
+  "lesson_word_count_target": "150-210",
+  "tags": ["generative ai", "content generation", "large language models", "diffusion models", "guardrails", "hallucination", "bias"],
+  "version": "1.0"
+}

@@ -1,0 +1,50 @@
+{
+  "id": "topic003_quiz_2",
+  "topic_id": "topic003",
+  "questions": [
+    {
+      "id": "q1",
+      "question": "Which is an example of a generative AI output?",
+      "options": [
+        "A model predicting whether an email is spam or not spam",
+        "A system generating a new image from a text prompt",
+        "A model counting how many rows are in a database table",
+        "A program sorting numbers from smallest to largest"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q2",
+      "question": "Why might a generative model sometimes reproduce patterns it has seen before?",
+      "options": [
+        "Because it is trained on examples and can mimic repeated content",
+        "Because it always copies and pastes its dataset",
+        "Because it cannot learn statistical relationships",
+        "Because it only works on very small datasets"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q3",
+      "question": "What are guardrails used for in generative AI applications?",
+      "options": [
+        "To make the model forget training data",
+        "To constrain outputs and reduce errors or unsafe content",
+        "To guarantee the model never makes mistakes",
+        "To replace the need for any verification"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q4",
+      "question": "Which combination best matches the lesson’s recommended approach for many applications?",
+      "options": [
+        "Use vague prompts and avoid verification",
+        "Use clear prompts, restricted sources, verification, and human oversight",
+        "Avoid using any constraints so creativity is higher",
+        "Rely only on the model output without checking"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

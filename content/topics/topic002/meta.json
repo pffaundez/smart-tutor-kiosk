@@ -1,0 +1,10 @@
+{
+  "id": "topic002",
+  "title": "Supervised vs. Unsupervised Learning",
+  "language": "en",
+  "level": "intro",
+  "estimated_read_time_sec": 60,
+  "lesson_word_count_target": "120-170",
+  "tags": ["machine learning", "supervised learning", "unsupervised learning", "labels", "clustering"],
+  "version": "1.0"
+}
