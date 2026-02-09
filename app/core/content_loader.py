@@ -30,8 +30,15 @@ def load_topic(topic_id: str) -> dict:
     quiz1_path = topic_dir / "quiz_1.json"
     quiz2_path = topic_dir / "quiz_2.json"
 
+    title = topic_id
+    meta_path = topic_dir / "meta.json"
+    if meta_path.exists():
+        meta = load_json(meta_path)
+        title = meta.get("title", topic_id)
+
     data = {
         "id": topic_id,
+        "title": title,
         "lesson": load_text(lesson_path) if lesson_path.exists() else "",
         "source": load_text(source_path) if source_path.exists() else "",
         "quiz_1": load_json(quiz1_path) if quiz1_path.exists() else None,
