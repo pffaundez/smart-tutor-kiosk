@@ -8,8 +8,9 @@ class LLMClient:
     """
     llm1 = "llama3.1:latest"
     llm2 = "llama2:7b-chat-q4_K_M"
+    llm3 = "qwen2.5:3b"
 
-    def __init__(self, base_url: str = "http://127.0.0.1:11434", model: str = llm2, timeout: int = 160):
+    def __init__(self, base_url: str = "http://127.0.0.1:11434", model: str = llm3, timeout: int = 160):
         self.base_url = base_url.rstrip("/")
         self.model = model
         self.timeout = timeout
