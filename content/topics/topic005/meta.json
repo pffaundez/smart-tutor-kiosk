@@ -1,0 +1,21 @@
+{
+  "id": "overfitting",
+  "id2": "topic005",
+  "title": "What Is Overfitting?",
+  "level": "high-school",
+  "estimated_minutes": 5,
+  "learning_objectives": [
+    "Understand what overfitting means in machine learning",
+    "Recognize why overfitting is a problem",
+    "Identify basic ways to reduce overfitting"
+  ],
+  "key_concepts": [
+    "overfitting",
+    "generalization",
+    "training data",
+    "test data",
+    "model complexity"
+  ],
+  "prerequisites": [],
+  "version": "1.0"
+}

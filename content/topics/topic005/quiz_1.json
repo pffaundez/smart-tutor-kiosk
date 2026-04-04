@@ -1,0 +1,50 @@
+{
+  "id": "topic005_quiz_1",
+  "topic_id": "topic005",
+  "questions": [
+    {
+      "id": "q1",
+      "question": "What does overfitting mean?",
+      "options": [
+        "The model learns general patterns from data",
+        "The model memorizes training data too closely",
+        "The model ignores the training data",
+        "The model runs too slowly"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q2",
+      "question": "What is a key problem caused by overfitting?",
+      "options": [
+        "The model cannot store data",
+        "The model performs poorly on new data",
+        "The model uses too little memory",
+        "The model stops learning"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q3",
+      "question": "What does it mean for a model to generalize?",
+      "options": [
+        "It memorizes all training examples",
+        "It performs well on new, unseen data",
+        "It runs faster on computers",
+        "It reduces the size of the dataset"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q4",
+      "question": "Which situation suggests overfitting?",
+      "options": [
+        "The model performs equally on all data",
+        "The model performs better on test data than training data",
+        "The model performs much better on training data than test data",
+        "The model does not use training data"
+      ],
+      "correctIndex": 2
+    }
+  ]
+}

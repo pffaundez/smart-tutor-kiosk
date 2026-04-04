@@ -1,0 +1,50 @@
+{
+  "id": "topic005_quiz_2",
+  "topic_id": "topic005",
+  "questions": [
+    {
+      "id": "q1",
+      "question": "Why does a very complex model often overfit?",
+      "options": [
+        "Because it ignores patterns",
+        "Because it cannot process data",
+        "Because it learns noise and small details",
+        "Because it deletes data"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q2",
+      "question": "What is one way to reduce overfitting?",
+      "options": [
+        "Use less data",
+        "Increase randomness in outputs",
+        "Simplify the model",
+        "Remove test data"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q3",
+      "question": "Why is comparing training and test performance useful?",
+      "options": [
+        "To increase model speed",
+        "To detect overfitting",
+        "To reduce memory usage",
+        "To change the dataset size"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q4",
+      "question": "What role does data quality play in overfitting?",
+      "options": [
+        "It has no effect",
+        "It only affects speed",
+        "Poor data can make overfitting worse",
+        "It prevents models from training"
+      ],
+      "correctIndex": 2
+    }
+  ]
+}
