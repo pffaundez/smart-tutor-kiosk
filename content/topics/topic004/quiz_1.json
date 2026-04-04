@@ -1,0 +1,50 @@
+{
+  "id": "topic004_quiz_1",
+  "topic_id": "topic004",
+  "questions": [
+    {
+      "id": "q1",
+      "question": "What is the main goal of a recommendation system?",
+      "options": [
+        "To store large amounts of data",
+        "To suggest items users may like",
+        "To protect user accounts",
+        "To improve internet speed"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q2",
+      "question": "What does content-based filtering use to make recommendations?",
+      "options": [
+        "Random selection",
+        "Other users' passwords",
+        "Items similar to what you liked before",
+        "Internet connection speed"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q3",
+      "question": "What is collaborative filtering based on?",
+      "options": [
+        "Comparing your behavior with other users",
+        "Device settings",
+        "The time of day",
+        "The number of ads shown"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q4",
+      "question": "Which of the following is a limitation of recommendation systems?",
+      "options": [
+        "They only work offline",
+        "They cannot store data",
+        "They may create filter bubbles",
+        "They always show random content"
+      ],
+      "correctIndex": 2
+    }
+  ]
+}

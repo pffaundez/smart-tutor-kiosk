@@ -1,0 +1,50 @@
+{
+  "id": "topic004_quiz_2",
+  "topic_id": "topic004",
+  "questions": [
+    {
+      "id": "q1",
+      "question": "If a system recommends movies based on what similar users liked, which method is it using?",
+      "options": [
+        "Content-based filtering",
+        "Collaborative filtering",
+        "Encryption",
+        "Compression"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q2",
+      "question": "Which signal can improve recommendations?",
+      "options": [
+        "Screen brightness",
+        "User clicks and watch time",
+        "Battery level",
+        "Keyboard type"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q3",
+      "question": "Why do modern systems combine different methods?",
+      "options": [
+        "To reduce electricity usage",
+        "To improve accuracy",
+        "To delete data faster",
+        "To increase internet speed"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q4",
+      "question": "What does it mean that recommendation systems detect patterns?",
+      "options": [
+        "They understand human emotions",
+        "They follow strict rules only",
+        "They learn from user behavior data",
+        "They ignore user actions"
+      ],
+      "correctIndex": 2
+    }
+  ]
+}

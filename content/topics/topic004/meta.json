@@ -1,0 +1,21 @@
+{
+  "id": "recommendation_systems",
+  "id2": "topic004",
+  "title": "How Recommendation Systems Work",
+  "level": "high-school",
+  "estimated_minutes": 5,
+  "learning_objectives": [
+    "Understand what a recommendation system does",
+    "Recognize the difference between content-based and collaborative filtering",
+    "Understand how user data improves recommendations"
+  ],
+  "key_concepts": [
+    "recommendations",
+    "content-based filtering",
+    "collaborative filtering",
+    "user behavior",
+    "patterns"
+  ],
+  "prerequisites": [],
+  "version": "1.0"
+}
