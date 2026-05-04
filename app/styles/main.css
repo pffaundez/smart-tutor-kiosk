@@ -1,0 +1,593 @@
+/* ===== GLOBAL LAYOUT ===== */
+.stApp {
+    background: #f5f7fb;
+}
+
+.main .block-container {
+    max-width: 1120px;
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #111827 !important;
+}
+
+/* ===== TOP BAR ===== */
+.smart-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.smart-title {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #111827 !important;
+}
+
+.smart-subtitle {
+    font-size: 0.95rem;
+    color: #6b7280 !important;
+}
+
+/* ===== GENERIC TEXT ===== */
+.smart-section-title {
+    font-size: 1.9rem;
+    font-weight: 800;
+    margin-bottom: 0.35rem;
+    color: #111827 !important;
+}
+
+.smart-section-subtitle {
+    font-size: 1.05rem;
+    margin-bottom: 1.15rem;
+    color: #6b7280 !important;
+}
+
+.smart-helper {
+    font-size: 0.96rem;
+    margin-bottom: 1rem;
+    color: #6b7280 !important;
+}
+
+/* ===== HERO ===== */
+.smart-hero {
+    text-align: center;
+    padding: 0.5rem 0 0.75rem 0;
+}
+
+.smart-hero-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 0.35rem;
+    color: #111827 !important;
+}
+
+.smart-hero-subtitle {
+    font-size: 1.05rem;
+    max-width: 760px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: #6b7280 !important;
+}
+
+/* ===== CARDS ===== */
+.smart-grid-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 1rem;
+    min-height: 150px;
+    box-shadow: 0 4px 18px rgba(17, 24, 39, 0.04);
+    margin-bottom: 0.75rem;
+}
+
+.smart-grid-card.selected {
+    border: 2px solid #374151;
+    background: #f9fafb;
+}
+
+.smart-card-title {
+    font-size: 1.06rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: #111827 !important;
+}
+
+.smart-card-text {
+    font-size: 0.96rem;
+    line-height: 1.5;
+    color: #6b7280 !important;
+}
+
+/* ===== LESSON ===== */
+.smart-lesson-markdown {
+    max-width: 820px;
+    margin: 1.25rem auto 0 auto;
+}
+
+.smart-lesson-markdown .lesson-content,
+.smart-lesson-markdown .lesson-content * {
+    font-size: 1.22rem !important;
+    line-height: 1.95 !important;
+    color: #111827 !important;
+}
+
+.smart-lesson-markdown .lesson-content p {
+    margin-bottom: 1.15rem;
+}
+
+/* ===== QUIZ ===== */
+.smart-question-label {
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.45rem;
+    color: #374151 !important;
+}
+
+.smart-question-text {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 0.9rem;
+    color: #111827 !important;
+}
+
+.smart-quiz-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.smart-question-divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 1.5rem 0;
+}
+
+.smart-quiz-carousel-nav {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* ===== SCORE ===== */
+.smart-score-banner {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.smart-score-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #6b7280;
+}
+
+.smart-score-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #111827;
+}
+
+/* ===== RESULTS (RESTORED PREMIUM STYLE) ===== */
+.smart-result-hero {
+    background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%);
+    border: 1px solid #e5e7eb;
+    border-radius: 22px;
+    padding: 1.25rem 1.3rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 8px 24px rgba(17, 24, 39, 0.06);
+}
+
+/* Title */
+.smart-result-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+    color: #111827 !important;
+}
+
+/* Score (main focus) */
+.smart-result-score {
+    font-size: 2.2rem;
+    font-weight: 900;
+    margin-bottom: 0.3rem;
+    color: #374151 !important;
+    line-height: 1.1;
+}
+
+/* Supporting text */
+.smart-result-subtitle {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #4b5563 !important;
+}
+
+.smart-result-hero {
+    border-left: 4px solid #374151;
+}
+
+/* Defensive: avoid white text inheritance */
+.smart-result-hero * {
+    color: #111827 !important;
+}
+
+/* ===== COMPARE VIEW ===== */
+.smart-compare-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 1.25rem;
+}
+
+.smart-compare-card.reexplained {
+    border: 1px solid #d1d5db;
+}
+
+/* ===== BUTTON BASE ===== */
+div.stButton > button {
+    min-height: 3rem;
+    font-size: 1rem;
+    border-radius: 14px;
+    font-weight: 600;
+}
+
+.smart-quiz-grid div.stButton > button {
+    min-height: 2.8rem;
+    font-size: 0.95rem;
+}
+
+/* ===== PRIMARY BUTTONS (DARK GREY SYSTEM) ===== */
+div.stButton > button[kind="primary"] {
+    background-color: #374151 !important;
+    color: #ffffff !important;
+    border: none !important;
+}
+
+div.stButton > button[kind="primary"]:hover {
+    background-color: #1f2937 !important;
+}
+
+div.stButton > button[kind="primary"]:active {
+    background-color: #111827 !important;
+}
+
+/* ===== SECONDARY BUTTONS ===== */
+div.stButton > button[kind="secondary"] {
+    background-color: #f3f4f6 !important;
+    color: #374151 !important;
+    border: 1px solid #d1d5db !important;
+}
+
+div.stButton > button[kind="secondary"]:hover {
+    background-color: #e5e7eb !important;
+    color: #111827 !important;
+}
+
+/* ===== DISABLED ===== */
+div.stButton > button:disabled {
+    background-color: #e5e7eb !important;
+    color: #9ca3af !important;
+    border: 1px solid #d1d5db !important;
+}
+
+/* ===== NAV ===== */
+.nav-button-row {
+    margin-bottom: 0.5rem;
+}
+.nav-button-row div.stButton > button {
+    min-height: 2.6rem;
+}
+
+/* ===== READING MODE ===== */
+.smart-bionic-toggle-label {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ===== FOOTER ===== */
+.smart-footer {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #9ca3af;
+    margin-top: 1rem;
+}
+
+/* ===== LOADER (CHATGPT STYLE) ===== */
+.smart-loader {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 1rem 1.1rem;
+    margin: 1.2rem 0 1.4rem 0;
+
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+
+    box-shadow: 0 6px 20px rgba(17, 24, 39, 0.08);
+}
+
+/* Dots container */
+.smart-loader-dots {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-width: 42px;
+}
+
+/* Individual dots */
+.smart-loader-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+
+    background: #374151; /* gris oscuro coherente con el nuevo sistema */
+    opacity: 0.35;
+
+    animation: smart-loader-bounce 1.2s infinite ease-in-out;
+}
+
+.smart-loader-dot:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.smart-loader-dot:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+/* Animation */
+@keyframes smart-loader-bounce {
+    0%, 80%, 100% {
+        transform: translateY(0);
+        opacity: 0.35;
+    }
+    40% {
+        transform: translateY(-4px);
+        opacity: 1;
+    }
+}
+
+/* Text container */
+.smart-loader-text-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+/* MAIN TEXT (important: high contrast) */
+.smart-loader-text {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: #111827 !important; /* fuerte contraste */
+    line-height: 1.35;
+}
+
+/* SUBTEXT */
+.smart-loader-subtext {
+    font-size: 0.92rem;
+    color: #6b7280 !important;
+    line-height: 1.35;
+    margin-top: 0.08rem;
+}
+
+/* ===== COMPARE VIEW TEXT CONTRAST FIX ===== */
+
+/* Contenedor base */
+.smart-compare-content {
+    color: #111827 !important;
+}
+
+/* Fuerza color en TODO el contenido interno */
+.smart-compare-content,
+.smart-compare-content p,
+.smart-compare-content li,
+.smart-compare-content strong,
+.smart-compare-content em,
+.smart-compare-content span,
+.smart-compare-content div,
+.smart-compare-content h1,
+.smart-compare-content h2,
+.smart-compare-content h3,
+.smart-compare-content h4,
+.smart-compare-content blockquote,
+.smart-compare-content code {
+    color: #111827 !important;
+}
+
+/* Párrafos legibles */
+.smart-compare-content p {
+    margin-bottom: 0.9rem;
+    line-height: 1.85 !important;
+    font-size: 1.05rem !important;
+}
+
+/* Listas */
+.smart-compare-content ul,
+.smart-compare-content ol {
+    padding-left: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+/* Blockquote (mejor contraste) */
+.smart-compare-content blockquote {
+    background: #f3f4f6;
+    border-left: 4px solid #d1d5db;
+    padding: 0.75rem 0.9rem;
+    border-radius: 8px;
+    color: #374151 !important;
+}
+
+/* Código */
+.smart-compare-content code {
+    background: #f3f4f6;
+    padding: 0.2rem 0.35rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+/* Evita texto gris heredado de markdown */
+.smart-compare-card * {
+    color: #111827 !important;
+}
+
+/***** TOP CTA BUTTON (LESSON) *****/
+button[key="to_q1_top"] {
+    min-height: 3.2rem !important;
+    font-size: 1.05rem !important;
+    font-weight: 800 !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 22px rgba(17, 24, 39, 0.15) !important;
+}
+
+button[key="to_q1_top"]:hover {
+    box-shadow: 0 10px 26px rgba(17, 24, 39, 0.2) !important;
+}
+
+/* ===== SCORE TEXT FIX ===== */
+.smart-score-caption {
+    color: #374151 !important;
+}
+
+/* ===== RECOMMENDATION (RESTORED CLEAN VERSION) ===== */
+.smart-recommendation-banner {
+    background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%);
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 1rem 1.1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 6px 18px rgba(17, 24, 39, 0.06);
+}
+
+.smart-recommendation-label {
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #6b7280 !important;
+    margin-bottom: 0.3rem;
+}
+
+.smart-recommendation-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #111827 !important;
+    margin-bottom: 0.2rem;
+}
+
+.smart-recommendation-text {
+    font-size: 0.98rem;
+    line-height: 1.5;
+    color: #374151 !important;
+}
+
+/* EXTRA DEFENSIVE (evita herencias raras) */
+.smart-score-banner * {
+    color: #111827 !important;
+}
+
+.smart-recommendation-banner * {
+    color: #111827 !important;
+}
+
+/* ===== COMPARE VIEW TITLES (HIERARCHY FIX) ===== */
+
+.smart-compare-title {
+    font-size: 1.15rem !important;
+    font-weight: 800 !important;
+    color: #111827 !important;
+
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.4rem;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* Opcional: leve diferenciación visual entre columnas */
+.smart-compare-card.original .smart-compare-title {
+    opacity: 0.85;
+}
+
+.smart-compare-card.reexplained .smart-compare-title {
+    opacity: 1;
+}
+
+/* ===== LESSON SINGLE VIEW CARD ===== */
+.smart-lesson-single-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 1.25rem 1.35rem;
+    box-shadow: 0 8px 30px rgba(17, 24, 39, 0.06);
+    margin-top: 1rem;
+}
+
+.smart-lesson-single-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #111827 !important;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* ===== STICKY TOP CTA ===== */
+/* ===== STICKY TOP CTA ===== */
+/* Streamlit widgets are rendered outside markdown wrappers.
+   Use a marker + adjacent horizontal block selector. */
+
+.smart-sticky-cta-marker + div[data-testid="stHorizontalBlock"] {
+    position: sticky;
+    top: 0.5rem;
+    z-index: 1000;
+
+    background: rgba(245, 247, 251, 0.96);
+    backdrop-filter: blur(6px);
+
+    padding: 0.5rem 0 0.75rem 0;
+    margin-bottom: 0.75rem;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* Keep only the center column visually prominent */
+.smart-sticky-cta-marker + div[data-testid="stHorizontalBlock"] > div:nth-child(2) .stButton > button {
+    min-height: 3.2rem !important;
+    font-size: 1.05rem !important;
+    font-weight: 800 !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 22px rgba(17, 24, 39, 0.12) !important;
+}
+
+.smart-sticky-cta-marker + div[data-testid="stHorizontalBlock"] > div:nth-child(2) .stButton > button:hover {
+    box-shadow: 0 10px 26px rgba(17, 24, 39, 0.18) !important;
+}
+
+/* Center container */
+.smart-sticky-cta-inner {
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+/* Button styling (más protagonista) */
+.smart-sticky-cta button {
+    min-height: 3.2rem !important;
+    font-size: 1.05rem !important;
+    font-weight: 800 !important;
+    border-radius: 16px !important;
+
+    box-shadow: 0 8px 22px rgba(17, 24, 39, 0.12) !important;
+}
+
+.smart-sticky-cta button:hover {
+    box-shadow: 0 10px 26px rgba(17, 24, 39, 0.18) !important;
+}
