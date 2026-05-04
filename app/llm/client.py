@@ -15,7 +15,13 @@ class LLMClient:
         self.model = model
         self.timeout = timeout
 
-    def chat(self, system_prompt: str, user_prompt: str, max_tokens: int = 180, temperature: float = 0.0) -> dict:
+    def chat(
+        self,
+        system_prompt: str,
+        user_prompt: str,
+        max_tokens: int = 256,
+        temperature: float = 0.0,
+    ) -> dict:
         url = f"{self.base_url}/api/chat"
 
         payload = {
@@ -38,7 +44,14 @@ class LLMClient:
         r.raise_for_status()
         data = r.json()
 
-        text = data["message"]["content"]
-        return {"text": text, "latency_ms": latency_ms, "raw": data}
+        text = data.get("message", {}).get("content", "").strip()
+
+        return {
+            "text": text,
+            "latency_ms": latency_ms,
+            "done": data.get("done"),
+            "done_reason": data.get("done_reason"),
+            "raw": data,
+        }
 
 
