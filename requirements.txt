@@ -3,4 +3,4 @@ requests
 numpy
 datasets
 sentence-transformers
-faiss
+faiss-cpu==1.13.2
