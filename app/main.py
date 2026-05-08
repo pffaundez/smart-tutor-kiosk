@@ -13,11 +13,12 @@ from app.prompts.reexplain_modes import (
     get_mode_keys,
     requires_input,
 )
+from app.core.text_processor import markdown_bold_to_html
 
 DEBUG_MODE = False
 
 st.set_page_config(
-    page_title="Smart Tutor Demo",
+    page_title="Learn with Smart Tutor Demo",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
@@ -35,7 +36,6 @@ def load_css():
 load_css()
 
 init_session_state(st)
-maybe_reset(st)
 
 # Keep optional UI state explicit to avoid missing-key issues after reruns.
 if "q1_result" not in st.session_state:
@@ -138,9 +138,9 @@ def render_nav_buttons(back_step=None, back_label="Back", home_label="Home", inc
     st.markdown("<div class='nav-button-row'>", unsafe_allow_html=True)
 
     if include_test:
-        col1, col2, col3 = st.columns([1, 3, 1])
+        col1, col2, col3, col4 = st.columns([1, 3, 1, 0.5])
     else:
-        col1, col2, col3 = st.columns([1, 6, 1])
+        col1, col2, col3, col4 = st.columns([1, 6, 1, 0.5])
 
     with col1:
         if st.button(
@@ -171,6 +171,17 @@ def render_nav_buttons(back_step=None, back_label="Back", home_label="Home", inc
             reset_app_state()
             st.rerun()
 
+    with col4:
+        if st.button(
+            "🔄",
+            key=f"reset_{st.session_state.step}",
+            use_container_width=True,
+            type="secondary",
+            help="Reset session and return to home"
+        ):
+            reset_app_state()
+            st.rerun()
+
     st.markdown("</div>", unsafe_allow_html=True)
 
 
@@ -184,7 +195,7 @@ def render_topbar():
         st.markdown(
             """
             <div class="smart-brand">
-                <div class="smart-title">🧠 Smart Tutor KI-osk 🦉</div>
+                <div class="smart-title">🧠 Learn with Smart Tutor KI-osk 🦉</div>
                 <div class="smart-subtitle">Interactive learning demo</div>
             </div>
             """,
@@ -374,10 +385,11 @@ def render_compare_view(source_text: str, reexplain_text: str, use_bionic_origin
 
     with col_right:
         st.markdown("<div class='smart-compare-header'>New version</div>", unsafe_allow_html=True)
+        rendered_reexplain = markdown_bold_to_html(reexplain_text)
         reexplain_html = f"""
         <div class='smart-compare-card reexplained'>
             <div class='smart-compare-title'>Re-explanation</div>
-            <div class='smart-compare-content'>{reexplain_text}</div>
+            <div class='smart-compare-content'>{rendered_reexplain}</div>
         </div>
         """
         st.markdown(reexplain_html, unsafe_allow_html=True)
@@ -658,11 +670,6 @@ if st.session_state.step == "select":
         topics_with_titles[t.get("title", tid)] = tid
 
     with st.container():
-        render_section_header(
-            "Learn with Smart Tutor",
-            "Read a lesson, explore another explanation style, and test your understanding.",
-        )
-
         st.markdown(
             """
             <div class="smart-hero">
