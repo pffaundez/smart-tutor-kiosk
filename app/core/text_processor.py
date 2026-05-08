@@ -71,6 +71,26 @@ def format_easy_to_read(text: str) -> str:
     return formatted_text
 
 
+def markdown_bold_to_html(text: str) -> str:
+    """Convert Markdown bold markers to safe HTML while preserving paragraphs. Avoid escaping * before conversion."""
+    # Convert **bold** or __bold__ to <strong> tags first (do not escape asterisks)
+    html = re.sub(r"(\*\*|__)(.+?)\1", r"<strong>\2</strong>", text)
+    # Now escape everything except <strong> tags
+    def escape_except_strong(match):
+        content = match.group(1)
+        return f"<strong>{escape(content)}</strong>"
+    html = re.sub(r"<strong>(.+?)</strong>", escape_except_strong, html)
+    # Escape the rest
+    html = re.sub(r"(?<!<strong>)([^<]+)(?!</strong>)", lambda m: escape(m.group(1)), html)
+    # Restore paragraphs and line breaks
+    paragraphs = [p.strip() for p in html.split("\n\n") if p.strip()]
+    html_parts = []
+    for para in paragraphs:
+        para = para.replace("\n", "<br>")
+        html_parts.append(f"<p>{para}</p>")
+    return "".join(html_parts)
+
+
 
 def _bionicize_word(word: str) -> str:
     """

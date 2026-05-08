@@ -4,7 +4,7 @@ def render_topbar():
     st.markdown("""
     <div class="smart-topbar">
         <div class="smart-brand">
-            <div class="smart-title">Smart Tutor</div>
+            <div class="smart-title">Learn with Smart Tutor</div>
             <div class="smart-subtitle">Interactive learning demo</div>
         </div>
         <div class="smart-badge">Local AI</div>

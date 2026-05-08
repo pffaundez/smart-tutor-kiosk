@@ -32,6 +32,7 @@ REEXPLAIN_MODES = {
             "- Rephrase the ideas using simple words.\n"
             "- Do not add new facts.\n"
             "- Do not copy sentences verbatim.\n\n"
+            "- Bold the most important concepts using Markdown **bold**. Use bold sparingly for key terms and main ideas only.\n\n"
             "Output only the two paragraphs. Start immediately with the first sentence."
         ),
     },
@@ -43,6 +44,7 @@ REEXPLAIN_MODES = {
             "No titles, no bullet points, no numbered lists. "
             "Write exactly 2 short paragraphs, 110 to 140 words total. "
             "Use only the provided LESSON text. Rephrase it and do not copy it verbatim."
+            " Bold the most important concepts using Markdown **bold**. Use bold sparingly for key terms and main ideas only."
         ),
     },
     "daily_analogies": {
@@ -54,6 +56,7 @@ REEXPLAIN_MODES = {
             "No titles, no bullet points, no numbered lists. "
             "Write exactly 2 short paragraphs, 120 to 160 words total. "
             "Use only the provided LESSON text as factual source and rephrase it."
+            " Bold the most important concepts using Markdown **bold**. Use bold sparingly for key terms and main ideas only."
         ),
     },
     "custom_domain_analogies": {
@@ -108,4 +111,5 @@ def build_custom_domain_prompt(domain: str) -> str:
         f"No titles, no bullet points, no numbered lists. "
         f"Write exactly 2 short paragraphs, 120 to 160 words total. "
         f"Use only the provided LESSON text as factual source and rephrase it."
+        f" Bold the most important concepts using Markdown **bold**. Use bold sparingly for key terms and main ideas only."
     )

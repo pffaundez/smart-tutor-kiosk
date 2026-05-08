@@ -4,7 +4,7 @@ from app.ui.components import helper_text
 
 def render_topic_screen():
     open_main_card(
-        "Learn with Smart Tutor",
+        "",
         "Read a lesson, test your understanding, and get a new explanation style if you need one."
     )
 
