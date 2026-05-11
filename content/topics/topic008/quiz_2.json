@@ -1,0 +1,50 @@
+{
+  "id": "topic008_quiz_2",
+  "topic_id": "topic008",
+  "questions": [
+    {
+      "id": "q1",
+      "question": "Why are labeled examples important during training?",
+      "options": [
+        "They help the AI connect visual patterns to categories",
+        "They increase internet speed",
+        "They replace neural networks",
+        "They reduce image size"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q2",
+      "question": "What does CNN stand for?",
+      "options": [
+        "Central Neural Number",
+        "Convolutional Neural Network",
+        "Computer Navigation Node",
+        "Compressed Numeric Network"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q3",
+      "question": "Why can AI image-recognition systems make mistakes?",
+      "options": [
+        "Because images may be blurry or poorly lit",
+        "Because computers cannot process numbers",
+        "Because AI only works with text",
+        "Because all images are identical"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q4",
+      "question": "How does an AI system recognize a new image?",
+      "options": [
+        "By comparing it to learned patterns",
+        "By searching the internet manually",
+        "By asking a human every time",
+        "By randomly choosing a label"
+      ],
+      "correctIndex": 0
+    }
+  ]
+}

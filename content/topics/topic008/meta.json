@@ -1,0 +1,23 @@
+{
+  "id": "image_recognition",
+  "id2": "topic008",
+  "title": "How AI Recognizes Images",
+  "level": "high-school",
+  "estimated_minutes": 5,
+  "learning_objectives": [
+    "Understand how AI systems analyze images",
+    "Recognize the role of pixels and patterns in image recognition",
+    "Understand how training examples help AI learn visual categories",
+    "Recognize some real-world uses and limitations of computer vision"
+  ],
+  "key_concepts": [
+    "computer vision",
+    "pixels",
+    "patterns",
+    "training data",
+    "neural networks",
+    "CNN"
+  ],
+  "prerequisites": [],
+  "version": "1.0"
+}

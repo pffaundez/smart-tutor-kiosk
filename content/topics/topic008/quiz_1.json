@@ -1,0 +1,50 @@
+{
+  "id": "topic008_quiz_1",
+  "topic_id": "topic008",
+  "questions": [
+    {
+      "id": "q1",
+      "question": "What does a computer mainly see in an image?",
+      "options": [
+        "A written description",
+        "Collections of pixels and numbers",
+        "Human emotions",
+        "Internet connections"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q2",
+      "question": "How does AI learn to recognize objects in images?",
+      "options": [
+        "By studying many labeled examples",
+        "By manually drawing images",
+        "By memorizing one photograph",
+        "By reading only text documents"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q3",
+      "question": "What are simple visual features an AI may learn first?",
+      "options": [
+        "Passwords and usernames",
+        "Audio signals",
+        "Edges, colors, and shapes",
+        "Internet speeds"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q4",
+      "question": "What is one common use of AI image recognition?",
+      "options": [
+        "Face unlock on smartphones",
+        "Printing books",
+        "Charging batteries",
+        "Compressing files"
+      ],
+      "correctIndex": 0
+    }
+  ]
+}
