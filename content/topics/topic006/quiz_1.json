@@ -1,0 +1,50 @@
+{
+  "id": "topic006_quiz_1",
+  "topic_id": "topic006",
+  "questions": [
+    {
+      "id": "q1",
+      "question": "What is a Large Language Model mainly designed to work with?",
+      "options": [
+        "Human language",
+        "Satellite signals",
+        "Electrical circuits",
+        "Video compression"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q2",
+      "question": "How does a Large Language Model learn during training?",
+      "options": [
+        "By memorizing one textbook",
+        "By studying patterns in large amounts of text",
+        "By directly understanding human emotions",
+        "By connecting to the internet in real time"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q3",
+      "question": "What does a Large Language Model mainly do when generating text?",
+      "options": [
+        "Copies sentences from websites",
+        "Searches a database manually",
+        "Predicts the most likely next token",
+        "Creates random words"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q4",
+      "question": "What is one common limitation of Large Language Models?",
+      "options": [
+        "They can physically damage computers",
+        "They only work in one language",
+        "They sometimes generate incorrect information",
+        "They cannot process text"
+      ],
+      "correctIndex": 2
+    }
+  ]
+}

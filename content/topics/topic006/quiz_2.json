@@ -1,0 +1,50 @@
+{
+  "id": "topic006_quiz_2",
+  "topic_id": "topic006",
+  "questions": [
+    {
+      "id": "q1",
+      "question": "Why are Large Language Models flexible tools?",
+      "options": [
+        "Because they can physically change their hardware",
+        "Because they are trained on many language examples",
+        "Because they always know the correct answer",
+        "Because they only answer short questions"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q2",
+      "question": "What is a token in a Large Language Model?",
+      "options": [
+        "A computer screen",
+        "A type of internet cable",
+        "A word or part of a word",
+        "A database entry"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q3",
+      "question": "Why can an LLM produce responses that sound convincing?",
+      "options": [
+        "Because it predicts language patterns effectively",
+        "Because it understands reality exactly like humans",
+        "Because it checks every answer with experts",
+        "Because it reads new books during every conversation"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q4",
+      "question": "What does the term hallucination mean in AI?",
+      "options": [
+        "The model shuts down unexpectedly",
+        "The model generates incorrect or invented information",
+        "The model translates languages",
+        "The model deletes old training data"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}
