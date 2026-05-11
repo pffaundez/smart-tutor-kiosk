@@ -33,6 +33,8 @@ def init_session_state(st):
 
     if "reexplain_mode" not in st.session_state:
         st.session_state.reexplain_mode = None
+    if "reexplain_view_mode" not in st.session_state:
+        st.session_state.reexplain_view_mode = "both"
 
 
 def touch(st):

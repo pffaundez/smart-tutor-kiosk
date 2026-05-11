@@ -104,6 +104,7 @@ def reset_reexplain_state():
     st.session_state.reexplain_text = ""
     st.session_state.reexplain_latency = None
     st.session_state.reexplain_mode = None
+    st.session_state.reexplain_view_mode = "both"
 
 
 def reset_app_state():
@@ -116,6 +117,7 @@ def reset_app_state():
     st.session_state.reexplain_text = ""
     st.session_state.reexplain_latency = None
     st.session_state.reexplain_mode = None
+    st.session_state.reexplain_view_mode = "both"
     st.session_state.step = "select"
     st.session_state.quiz_current_question = 0
 
@@ -367,32 +369,50 @@ def render_original_lesson_html(source_text: str, use_bionic: bool = False) -> s
     return f"<div class='smart-compare-content'>{source_text}</div>"
 
 
-def render_compare_view(source_text: str, reexplain_text: str, use_bionic_original: bool = False):
+def render_compare_view(
+    source_text: str,
+    reexplain_text: str,
+    use_bionic_original: bool = False,
+    show_original: bool = True,
+):
     """
-    Show original lesson and generated explanation side by side.
+    Show original lesson and generated explanation side by side,
+    or only the re-explanation centered if requested.
     """
-    col_left, col_right = st.columns(2)
+    if show_original:
+        col_left, col_right = st.columns(2)
 
-    with col_left:
-        st.markdown("<div class='smart-compare-header'>Original</div>", unsafe_allow_html=True)
-        original_html = f"""
-        <div class='smart-compare-card original'>
-            <div class='smart-compare-title'>Lesson</div>
-            {render_original_lesson_html(source_text, use_bionic=use_bionic_original)}
-        </div>
-        """
-        st.markdown(original_html, unsafe_allow_html=True)
+        with col_left:
+            st.markdown("<div class='smart-compare-header'>Original</div>", unsafe_allow_html=True)
+            original_html = f"""
+            <div class='smart-compare-card original'>
+                <div class='smart-compare-title'>Lesson</div>
+                {render_original_lesson_html(source_text, use_bionic=use_bionic_original)}
+            </div>
+            """
+            st.markdown(original_html, unsafe_allow_html=True)
 
-    with col_right:
-        st.markdown("<div class='smart-compare-header'>New version</div>", unsafe_allow_html=True)
-        rendered_reexplain = markdown_bold_to_html(reexplain_text)
-        reexplain_html = f"""
-        <div class='smart-compare-card reexplained'>
-            <div class='smart-compare-title'>Re-explanation</div>
-            <div class='smart-compare-content'>{rendered_reexplain}</div>
-        </div>
-        """
-        st.markdown(reexplain_html, unsafe_allow_html=True)
+        with col_right:
+            st.markdown("<div class='smart-compare-header'>New version</div>", unsafe_allow_html=True)
+            rendered_reexplain = markdown_bold_to_html(reexplain_text)
+            reexplain_html = f"""
+            <div class='smart-compare-card reexplained'>
+                <div class='smart-compare-title'>Re-explanation</div>
+                <div class='smart-compare-content'>{rendered_reexplain}</div>
+            </div>
+            """
+            st.markdown(reexplain_html, unsafe_allow_html=True)
+    else:
+        centered_cols = st.columns([1, 5, 1])
+        with centered_cols[1]:
+            rendered_reexplain = markdown_bold_to_html(reexplain_text)
+            reexplain_html = f"""
+            <div class='smart-compare-card reexplained'>
+                <div class='smart-compare-title'>Re-explanation</div>
+                <div class='smart-compare-content'>{rendered_reexplain}</div>
+            </div>
+            """
+            st.markdown(reexplain_html, unsafe_allow_html=True)
 
 
 def render_reexplanation_section(
@@ -475,6 +495,7 @@ def render_reexplanation_section(
 
         st.session_state.reexplain_text = text
         st.session_state.reexplain_latency = latency
+        st.session_state.reexplain_view_mode = "both"
         st.rerun()
 
     if st.session_state.reexplain_text:
@@ -489,10 +510,23 @@ def render_reexplanation_section(
             unsafe_allow_html=True,
         )
 
+        current_view = st.session_state.get("reexplain_view_mode", "both")
+        cols = st.columns([1, 2, 1])
+        with cols[1]:
+            toggle_label = (
+                "Show only re-explanation"
+                if current_view == "both"
+                else "Show original + re-explanation"
+            )
+            if st.button(toggle_label, key=f"{prefix}_toggle_view"):
+                st.session_state.reexplain_view_mode = "single" if current_view == "both" else "both"
+                st.rerun()
+
         render_compare_view(
             source_text=lesson_text,
             reexplain_text=st.session_state.reexplain_text,
             use_bionic_original=use_bionic_original,
+            show_original=current_view == "both",
         )
 
 
@@ -506,6 +540,16 @@ def render_topic_cards(topics_with_titles):
     n_cols = min(3, max(1, total_cards))
     cols = st.columns(n_cols)
 
+    emoji_map = {
+        "topic001": "🧠",
+        "topic002": "⚖️",
+        "topic003": "🤖",
+        "topic004": "⭐",
+        "topic005": "📉",
+        "topic006": "📌",
+        "topic007": "🔍",
+        "topic008": "✨",
+    }
     for idx, (title, tid) in enumerate(topic_items):
         topic_data = load_topic(tid)
         description = (
@@ -513,12 +557,14 @@ def render_topic_cards(topics_with_titles):
             or topic_data.get("summary")
             or "Short topic introduction."
         )
+        emoji = topic_data.get("emoji") or emoji_map.get(tid, "")
+        card_title = f"{emoji} {title}" if emoji else title
 
         with cols[idx % n_cols]:
             st.markdown(
                 f"""
                 <div class="smart-grid-card">
-                    <div class="smart-card-title">{title}</div>
+                    <div class="smart-card-title">{card_title}</div>
                     <div class="smart-card-text">{description}</div>
                 </div>
                 """,
