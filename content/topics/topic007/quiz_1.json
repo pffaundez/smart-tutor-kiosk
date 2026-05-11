@@ -1,0 +1,50 @@
+{
+  "id": "topic007_quiz_1",
+  "topic_id": "topic007",
+  "questions": [
+    {
+      "id": "q1",
+      "question": "Why can AI models learn incorrect patterns?",
+      "options": [
+        "Because training data may contain errors or biases",
+        "Because AI models stop using data after training",
+        "Because computers cannot process text",
+        "Because AI models only use images"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q2",
+      "question": "Why can AI responses sound correct even when they are wrong?",
+      "options": [
+        "Because AI systems truly understand the world",
+        "Because AI models predict patterns in language",
+        "Because AI systems check all facts with experts",
+        "Because AI models only repeat memorized sentences"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q3",
+      "question": "What can happen when a user question lacks context?",
+      "options": [
+        "The AI may misunderstand the request",
+        "The AI permanently deletes data",
+        "The AI shuts down automatically",
+        "The AI improves its training"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q4",
+      "question": "What is hallucination in AI?",
+      "options": [
+        "The AI physically damages hardware",
+        "The AI invents information that is not true",
+        "The AI translates text into another language",
+        "The AI stores too much data"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}

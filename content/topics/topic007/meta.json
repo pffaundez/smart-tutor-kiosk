@@ -1,0 +1,23 @@
+{
+  "id": "ai_mistakes",
+  "id2": "topic007",
+  "title": "Why Do AI Models Make Mistakes?",
+  "level": "high-school",
+  "estimated_minutes": 5,
+  "learning_objectives": [
+    "Understand why AI models can make mistakes",
+    "Recognize the role of training data in AI errors",
+    "Understand what hallucinations are in AI systems",
+    "Recognize why human supervision is still important"
+  ],
+  "key_concepts": [
+    "AI errors",
+    "training data",
+    "patterns",
+    "hallucination",
+    "bias",
+    "human supervision"
+  ],
+  "prerequisites": [],
+  "version": "1.0"
+}

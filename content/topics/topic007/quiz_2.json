@@ -1,0 +1,50 @@
+{
+  "id": "topic007_quiz_2",
+  "topic_id": "topic007",
+  "questions": [
+    {
+      "id": "q1",
+      "question": "Why does training data strongly affect AI performance?",
+      "options": [
+        "Because the model learns patterns from that data",
+        "Because the data changes the computer hardware",
+        "Because the model ignores the data completely",
+        "Because the data controls the internet connection"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q2",
+      "question": "Why might an AI model perform poorly in a specialized field?",
+      "options": [
+        "Because AI systems cannot process information",
+        "Because the model may not have trained on that type of data",
+        "Because the model only understands mathematics",
+        "Because the internet speed is too low"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "q3",
+      "question": "How do researchers try to reduce AI mistakes?",
+      "options": [
+        "By avoiding all human feedback",
+        "By removing all training data",
+        "By using better data and testing systems",
+        "By making the model answer more slowly"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "q4",
+      "question": "Why is human supervision still important when using AI?",
+      "options": [
+        "Because AI systems are always perfectly accurate",
+        "Because AI can still produce incorrect information",
+        "Because AI cannot generate language",
+        "Because AI models stop working after training"
+      ],
+      "correctIndex": 1
+    }
+  ]
+}
