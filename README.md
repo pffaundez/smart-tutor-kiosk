@@ -1,4 +1,6 @@
-# Smart Tutor Kiosk
+<img width="1721" height="144" alt="Screenshot from 2026-10-06 15-16-15" src="https://github.com/user-attachments/assets/cc56a1db-0e3d-47f2-ab2b-b4b40b74bebe" />
+
+# Smart Tutor KI-osk
 
 Smart Tutor Kiosk is an interactive, local-first AI tutoring demo designed for the kiosk in the HNI Entrance Hall.
 
