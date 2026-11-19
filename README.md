@@ -4,6 +4,9 @@ An interactive, local-first learning demo built with **Streamlit** and **Ollama*
 
 Explore introductory AI topics, discover alternative explanations, and check your understanding through quizzes—all with a language model running locally.
 
+<img width="1807" height="753" alt="image" src="https://github.com/user-attachments/assets/1da8b96c-49fb-49c2-bf28-4818416c82a7" />
+
+
 ## Learning experience
 
 **Choose a topic → Read the lesson → Explore explanations → Take a quiz → Review your progress**
